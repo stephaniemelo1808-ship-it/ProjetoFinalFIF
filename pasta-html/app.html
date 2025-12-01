@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Controle - Family Industries Finances</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body class="app-page">
+    <header class="app-header">
+        <nav class="navbar container">
+            <div class="logo">
+                <div class="logo-icon"></div><span>Family Industries Finances</span></div>
+            <div class="app-nav"><a href="dashboard.html" class="app-nav-link">Minhas Contas</a><a href="app.html" class="app-nav-link active">Meu Controle</a> <a href="index.html" class="logout-btn">Sair</a></div>
+        </nav>
+    </header>
+    <main>
+        <section class="total-balance-wrapper">
+            <div class="container">
+                <div class="total-balance-widget">
+                    <div class="balance-main"><span class="balance-widget-label">Saldo Líquido</span>
+                        <h2 id="total-balance-value" class="balance-widget-value">R$ 0,00</h2>
+                    </div>
+                    <div class="balance-details-grid">
+                        <div class="balance-details income"><span class="balance-widget-label">Total Entradas (Receitas)</span><span id="total-income-value" class="balance-widget-detail-value">R$ 0,00</span></div>
+                        <div class="balance-details expense"><span class="balance-widget-label">Total Saídas (Despesas)</span><span id="total-expenses-value" class="balance-widget-detail-value">R$ 0,00</span></div>
+                    </div>
+                    <p class="balance-widget-subtitle">((Saldos Iniciais + Receitas) - Despesas)</p>
+                </div>
+                <div class="quick-shortcuts">
+                    <button class="shortcut-btn" id="shortcut-add-income"><i class="fa-solid fa-plus"></i> Lançar Receita/Entrada</button>
+                    <button class="shortcut-btn" id="shortcut-add-expense"><i class="fa-solid fa-minus"></i> Lançar Despesa/Custo</button>
+                    <button class="shortcut-btn" id="btn-open-report"><i class="fa-solid fa-chart-line"></i> Gerar Relatório</button>
+                </div>
+            </div>
+        </section>
+        <section class="chart-section">
+            <div class="container chart-grid">
+                <div class="chart-container">
+                    <h3>Comparativo Total (Receitas vs Despesas)</h3><canvas id="comparisonChart"></canvas></div>
+                <div class="chart-container">
+                    <h3>Fluxo de Caixa Mensal</h3><canvas id="cashFlowChart"></canvas></div>
+            </div>
+        </section>
+        <section id="income-tracker-pf" class="income-tracker hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Controle Pessoal<span class="highlight">Lançar Receita</span></h2>
+                </div>
+                <form class="income-form" id="income-form-pf" data-editing-id="null">
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="income-date-pf">Data:</label><input type="date" id="income-date-pf" required></div>
+                        <div class="form-group-inline"><label for="income-category-pf">Categoria:</label><select id="income-category-pf"><option value="salario">Salário</option><option value="freelance">Freelance</option><option value="investimentos">Investimentos</option><option value="outros">Outros</option></select></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="income-desc-pf">Descrição:</label><input type="text" id="income-desc-pf" placeholder="Ex: Salário Mensal" required></div>
+                        <div class="form-group-inline"><label for="income-amount-pf">Valor (R$):</label><input type="text" id="income-amount-pf" placeholder="Ex: 3500,00" required inputmode="decimal"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline button-group full-width"><button type="submit" class="btn-primary" id="income-submit-btn-pf">Lançar Receita &rarr;</button></div>
+                    </div>
+                </form>
+                <div class="income-list-container">
+                    <h3>Minhas Receitas Pessoais</h3>
+                    <div id="income-list-pf" class="income-list"></div>
+                </div>
+            </div>
+        </section>
+        <section id="income-tracker-pj" class="income-tracker hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Controle Empresarial<span class="highlight">Lançar Entrada</span></h2>
+                </div>
+                <form class="income-form" id="income-form-pj" data-editing-id="null">
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="income-date-pj">Data:</label><input type="date" id="income-date-pj" required></div>
+                        <div class="form-group-inline"><label for="income-category-pj">Categoria:</label><select id="income-category-pj"><option value="vendas">Vendas</option><option value="servicos">Serviços</option><option value="consultoria">Consultoria</option><option value="outros">Outros</option></select></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="income-desc-pj">Descrição:</label><input type="text" id="income-desc-pj" placeholder="Ex: Projeto Cliente X" required></div>
+                        <div class="form-group-inline"><label for="income-amount-pj">Valor (R$):</label><input type="text" id="income-amount-pj" placeholder="Ex: 5000,00" required inputmode="decimal"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline button-group full-width"><button type="submit" class="btn-primary" id="income-submit-btn-pj">Lançar Entrada &rarr;</button></div>
+                    </div>
+                </form>
+                <div class="income-list-container">
+                    <h3>Entradas Empresariais</h3>
+                    <div id="income-list-pj" class="income-list"></div>
+                </div>
+            </div>
+        </section>
+        <section id="dashboard-pf" class="expense-tracker hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Controle Pessoal<span class="highlight">Lançar Despesa</span></h2>
+                </div>
+                <form class="expense-form" id="expense-form-pf" data-editing-id="null">
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="expense-date-pf">Data:</label><input type="date" id="expense-date-pf" required></div>
+                        <div class="form-group-inline"><label for="expense-category-pf">Categoria:</label><select id="expense-category-pf"><option value="supermercado">Supermercado</option><option value="lazer">Lazer</option><option value="aluguel">Aluguel/Moradia</option><option value="estudos">Estudos</option><option value="transporte">Transporte</option><option value="outro">Outro</option></select></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="expense-desc-pf">Descrição:</label><input type="text" id="expense-desc-pf" placeholder="Ex: Compras do mês" required></div>
+                        <div class="form-group-inline"><label for="expense-amount-pf">Valor (R$):</label><input type="text" id="expense-amount-pf" placeholder="Ex: 350,50" required inputmode="decimal"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline button-group full-width"><button type="submit" class="btn-primary" id="expense-submit-btn-pf">Lançar Despesa &rarr;</button></div>
+                    </div>
+                </form>
+                <div class="expense-list-container">
+                    <h3>Minhas Despesas Pessoais</h3>
+                    <div id="expense-list-pf" class="expense-list"></div>
+                </div>
+            </div>
+        </section>
+        <section id="dashboard-pj" class="expense-tracker hidden">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Controle Empresarial<span class="highlight">Lançar Custo</span></h2>
+                </div>
+                <form class="expense-form" id="expense-form-pj" data-editing-id="null">
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="expense-date-pj">Data:</label><input type="date" id="expense-date-pj" required></div>
+                        <div class="form-group-inline"><label for="expense-category-pj">Categoria:</label><select id="expense-category-pj"><option value="espaco_fisico">Espaço Físico</option><option value="funcionario">Funcionário</option><option value="software">Software/Licenças</option><option value="terceirizados">Trabalhos Terceirizados</option><option value="impostos">Impostos</option><option value="outro">Outro</option></select></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="expense-desc-pj">Descrição:</label><input type="text" id="expense-desc-pj" placeholder="Ex: Aluguel do escritório" required></div>
+                        <div class="form-group-inline"><label for="expense-amount-pj">Valor (R$):</label><input type="text" id="expense-amount-pj" placeholder="Ex: 1200,00" required inputmode="decimal"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline button-group full-width"><button type="submit" class="btn-primary" id="expense-submit-btn-pj">Lançar Custo &rarr;</button></div>
+                    </div>
+                </form>
+                <div class="expense-list-container">
+                    <h3>Custos Empresariais</h3>
+                    <div id="expense-list-pj" class="expense-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="report-modal" class="modal-overlay hidden">
+        <div class="modal-content report-modal-content">
+            <div class="modal-header">
+                <h2>Relatório Financeiro <span id="report-type-label"></span></h2>
+                <button class="close-modal" id="btn-close-report">&times;</button>
+            </div>
+
+            <div class="report-filters">
+                <div class="form-group-inline">
+                    <label>De:</label>
+                    <input type="date" id="filter-date-start">
+                </div>
+                <div class="form-group-inline">
+                    <label>Até:</label>
+                    <input type="date" id="filter-date-end">
+                </div>
+                <div class="form-group-inline button-group">
+                    <button id="btn-apply-filters" class="btn-primary">Filtrar</button>
+                </div>
+            </div>
+
+            <div id="printable-area">
+
+                <div class="report-section summary-section">
+                    <h3>Resumo do Período</h3>
+                    <div id="report-summary-content" class="summary-grid">
+                    </div>
+                    <div id="report-chart-container" class="hidden">
+                        <canvas id="reportBarChart"></canvas>
+                    </div>
+                </div>
+
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ccc;">
+
+                <div class="report-section transaction-section">
+                    <h3>Detalhamento de Transações</h3>
+                    <table class="report-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th>Tipo</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="report-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="modal-footer" style="margin-top: 20px; text-align: right;">
+                <button id="btn-export-pdf" class="btn-primary"><i class="fa-solid fa-file-pdf"></i> Exportar em PDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

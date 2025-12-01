@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Family Industries Finances</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-page">
+    <header class="app-header">
+        <nav class="navbar container">
+            <div class="logo">
+                <div class="logo-icon"></div><span>Family Industries Finances</span></div>
+            <div class="app-nav"><a href="dashboard.html" class="app-nav-link active">Minhas Contas</a><a href="app.html" class="app-nav-link">Meu Controle</a> <a href="index.html" class="logout-btn">Sair</a></div>
+        </nav>
+    </header>
+    <main>
+        <section class="bank-connection">
+            <div class="container">
+                <div class="section-title" id="welcome-title">
+                    <h2>Bem-vindo!<span class="highlight">Adicione suas contas</span></h2>
+                    <p class="section-subtitle">Adicione suas contas correntes, poupanças ou cartões para começar.</p>
+                </div>
+                <form class="account-form" id="new-account-form" data-editing-id="null">
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="bank-name">Banco:</label><input type="text" id="bank-name" name="bank-name" placeholder="Ex: Banco Digital X" required></div>
+                        <div class="form-group-inline"><label for="account-type">Tipo de Conta:</label><select id="account-type" name="account-type"><option value="corrente">Conta Corrente</option><option value="poupanca">Conta Poupança</option><option value="investimento">Investimento</option><option value="outro">Outro</option></select></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group-inline"><label for="initial-balance">Saldo Atual (R$):</label><input type="text" id="initial-balance" name="initial-balance" placeholder="Ex: 1500,00" required inputmode="decimal"></div>
+                        <div class="form-group-inline button-group"><button type="submit" class="btn-primary" id="account-submit-btn">Adicionar Conta &rarr;</button></div>
+                    </div>
+                </form>
+                <p class="form-note">Você pode adicionar quantas contas quiser.</p>
+                <div class="account-list-container">
+                    <h3>Minhas Contas</h3>
+                    <div id="account-list" class="account-list"></div>
+                </div>
+                <div class="app-continue-link"><a href="app.html" class="btn-primary btn-continue">Ir para meu controle financeiro &rarr;</a></div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js" defer></script>
+</body>
+
+</html>

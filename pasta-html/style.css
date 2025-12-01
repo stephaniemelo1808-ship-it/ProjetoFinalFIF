@@ -1,0 +1,1094 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input[type="date"] {
+    position: relative;
+    padding-right: 30px;
+    color-scheme: dark;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    cursor: pointer;
+    filter: invert(1);
+}
+
+
+/* --- (Marketing) --- */
+
+.header {
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    margin-right: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #E0E0E0;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #FFFFFF;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.auth-links .login-btn {
+    color: #E0E0E0;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.auth-links .login-btn:hover {
+    color: #FFFFFF;
+}
+
+.btn-primary {
+    background-color: #D90429;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #B00020;
+}
+
+.hero {
+    position: relative;
+    padding: 100px 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://via.placeholder.com/1500x800.png?text=Dashboard+Background');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+.hero-content {
+    max-width: 50%;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero-title .highlight {
+    color: #D90429;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 450px;
+    margin-bottom: 30px;
+    color: #E0E0E0;
+}
+
+.hero .btn-primary {
+    padding: 12px 25px;
+    font-size: 1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* --- Estrutura Página de Cadastro --- */
+
+.signup-page {
+    background-color: #FFFFFF;
+    color: #333;
+}
+
+
+/* --- Header do Cadastro --- */
+
+.signup-header {
+    background-color: #0B0B3A;
+    padding: 20px 0;
+    color: #FFFFFF;
+}
+
+.signup-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.signup-logo .highlight {
+    color: #D90429;
+}
+
+
+/* --- Conteúdo Principal (Formulário) --- */
+
+.signup-main {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    width: 90%;
+    max-width: 500px;
+}
+
+.form-container h2 {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+
+/* --- Toggle PF/PJ --- */
+
+.form-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.toggle-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.toggle-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggle-option input[type="radio"]:checked {
+    border-color: #0B0B3A;
+}
+
+.toggle-option input[type="radio"]:checked::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: #0B0B3A;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-signup {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+.signup-footer-wrapper {
+    background-color: #0B0B3A;
+    color: #FFFFFF;
+    position: relative;
+    padding-top: 40px;
+}
+
+.signup-footer-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #FFFFFF;
+    border-bottom-left-radius: 50% 40px;
+    border-bottom-right-radius: 50% 40px;
+}
+
+.signup-footer {
+    padding: 40px 0;
+}
+
+.footer-content-pf {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer-content-pf h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.footer-content-pf p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.footer-note-pf {
+    font-size: 0.9rem;
+    color: #D90429;
+}
+
+.bank-connection {
+    background-color: #0B0B3A;
+    padding: 80px 0;
+    text-align: center;
+    color: #FFFFFF;
+    border-top: 1px solid #333;
+}
+
+.section-title {
+    max-width: 650px;
+    margin: 0 auto 50px auto;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.section-title .highlight {
+    color: #D90429;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #E0E0E0;
+    line-height: 1.6;
+}
+
+.account-form,
+.income-form,
+.expense-form {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.income-form {
+    background-color: rgba(75, 192, 192, 0.1);
+}
+
+.expense-form {
+    background-color: rgba(217, 4, 41, 0.05);
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-row:last-child {
+    margin-bottom: 0;
+}
+
+.form-group-inline {
+    flex: 1;
+    text-align: left;
+}
+
+.form-group-inline.full-width {
+    flex-basis: 100%;
+}
+
+.form-group-inline label {
+    display: block;
+    font-size: 0.9rem;
+    color: #E0E0E0;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group-inline input[type="text"],
+.form-group-inline input[type="password"],
+.form-group-inline input[type="email"],
+.form-group-inline input[type="tel"],
+.form-group-inline input[type="date"],
+.form-group-inline select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #555;
+    background-color: #1a1a1a;
+    color: #FFFFFF;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group-inline input[type="text"]::placeholder {
+    color: #777;
+}
+
+.form-group-inline.button-group {
+    display: flex;
+    align-items: flex-end;
+}
+
+.form-group-inline .btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.form-note {
+    font-size: 0.9rem;
+    color: #AAA;
+}
+
+.account-list-container {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    text-align: left;
+}
+
+.account-list-container h3 {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.account-list .empty-message,
+.income-list .empty-message,
+.expense-list .empty-message {
+    color: #AAA;
+    text-align: center;
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px dashed #333;
+}
+
+.account-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    transition: background-color 0.3s;
+}
+
+.account-item:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.account-details {
+    flex: 1;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.account-details .bank-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.account-details .account-type {
+    font-size: 0.9rem;
+    color: #E0E0E0;
+    text-transform: capitalize;
+}
+
+.account-balance {
+    text-align: right;
+    margin-left: 15px;
+    white-space: nowrap;
+}
+
+.account-balance .balance-label {
+    font-size: 0.8rem;
+    color: #AAA;
+    display: block;
+}
+
+.account-balance .balance-amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.account-actions {
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #AAA;
+    transition: color 0.3s;
+    padding: 5px;
+}
+
+.action-btn.edit-btn:hover {
+    color: #FFFFFF;
+}
+
+.action-btn.delete-btn:hover {
+    color: #D90429;
+}
+
+.action-btn .fa-solid {
+    pointer-events: none;
+}
+
+.dashboard-page {
+    background-color: #0B0B3A;
+}
+
+.app-header {
+    background-color: #000;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+}
+
+.app-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.app-nav-link {
+    font-size: 0.9rem;
+    color: #E0E0E0;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.app-nav-link:hover,
+.app-nav-link.active {
+    color: #FFFFFF;
+}
+
+.logout-btn {
+    font-size: 0.9rem;
+    color: #D90429;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.dashboard-page .bank-connection {
+    border-top: none;
+    background-color: transparent;
+}
+
+.app-continue-link {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-continue {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+}
+
+.bank-connection-promo {
+    background-color: #0B0B3A;
+    padding: 80px 0;
+    text-align: center;
+    color: #FFFFFF;
+    border-top: 1px solid #333;
+}
+
+.bank-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.bank-logo-placeholder {
+    background-color: #FFFFFF;
+    color: #333;
+    padding: 20px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.security-info {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.security-icon-placeholder {
+    width: 50px;
+    height: 50px;
+    background-color: #D90429;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+}
+
+.security-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.security-info p {
+    color: #E0E0E0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.features-promo {
+    background-color: #000;
+    padding: 80px 0;
+    text-align: center;
+    color: #FFFFFF;
+    border-top: 1px solid #333;
+}
+
+.expense-tracker {
+    background-color: #000;
+    padding: 80px 0;
+    text-align: center;
+    color: #FFFFFF;
+    border-top: 1px solid #333;
+}
+
+.expense-list-container {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    text-align: left;
+}
+
+.expense-list-container h3 {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+}
+
+.expense-details {
+    flex: 1;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.expense-details .expense-description {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.expense-details .expense-category {
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    background-color: #D90429;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.expense-amount {
+    text-align: right;
+    margin-left: 15px;
+    white-space: nowrap;
+}
+
+.expense-amount .amount-label {
+    font-size: 0.8rem;
+    color: #AAA;
+    display: block;
+}
+
+.expense-amount .amount-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.expense-item .account-actions {
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;
+}
+
+.app-page {
+    background-color: #000;
+}
+
+.total-balance-wrapper {
+    background-color: #0B0B3A;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.total-balance-widget {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.balance-main {
+    margin-bottom: 25px;
+}
+
+.balance-details-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.balance-details {
+    text-align: center;
+}
+
+.balance-widget-label {
+    font-size: 0.9rem;
+    color: #E0E0E0;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.balance-widget-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    line-height: 1.1;
+    transition: color 0.3s;
+}
+
+.balance-widget-detail-value {
+    font-size: 1.7rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.balance-details.income .balance-widget-detail-value {
+    color: #4CAF50;
+}
+
+.balance-details.expense .balance-widget-detail-value {
+    color: #D90429;
+}
+
+.balance-widget-subtitle {
+    font-size: 0.8rem;
+    color: #AAA;
+    margin-top: 15px;
+}
+
+.quick-shortcuts {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.shortcut-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #555;
+    color: #E0E0E0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.shortcut-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+}
+
+.shortcut-btn .fa-solid {
+    font-size: 1rem;
+}
+
+.shortcut-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.chart-section {
+    background-color: #1a1a1a;
+    padding: 40px 0;
+    border-top: 1px solid #333;
+}
+
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    align-items: start;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+    padding: 30px;
+    border-radius: 8px;
+    height: 400px;
+}
+
+.chart-container h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #E0E0E0;
+}
+
+.income-tracker {
+    background-color: #051937;
+    padding: 80px 0;
+    text-align: center;
+    color: #FFFFFF;
+    border-top: 1px solid #333;
+}
+
+.income-list-container {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    text-align: left;
+}
+
+.income-list-container h3 {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.income-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+}
+
+.income-details {
+    flex: 1;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.income-details .income-description {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.income-details .income-category {
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    background-color: #4CAF50;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.income-amount {
+    text-align: right;
+    margin-left: 15px;
+    white-space: nowrap;
+}
+
+.income-amount .amount-label {
+    font-size: 0.8rem;
+    color: #AAA;
+    display: block;
+}
+
+.income-amount .amount-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.income-item .account-actions {
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;
+}
+
+
+/*
+   PARTE 9: MODAL DE RELATÓRIO*/
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content.report-modal-content {
+    background: #fff;
+    color: #333;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    /* Reset de fonte específico para o modal ser legível (fundo branco) */
+    font-family: Arial, sans-serif;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal-header h2 {
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.report-filters {
+    display: flex;
+    gap: 15px;
+    background: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+.report-filters label {
+    color: #333;
+    font-weight: normal;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.report-filters input {
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+    border-radius: 4px;
+}
+
+
+/* Tabela de Relatório */
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.report-table th,
+.report-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+    /* Força cor escura na tabela */
+}
+
+.report-table th {
+    background-color: #0B0B3A;
+    /* Usando o azul do seu tema */
+    color: #fff;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.summary-card h4 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.summary-card p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333 !important;
+    /* CORRIGIDO AQUI */
+}
+
+.text-green {
+    color: #28a745 !important;
+}
+
+.text-red {
+    color: #dc3545 !important;
+}
+
+#report-chart-container {
+    max-height: 300px;
+    margin-top: 20px;
+}
